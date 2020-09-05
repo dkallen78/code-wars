@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      7th Kyu - Turkish Numbers, 0-99
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function getTurkishNumber(num) {
+    let number = "";
+
+      let ones = ["sıfır", "bir", "iki", "üç", "dört",
+              "beş", "altı", "yedi", "sekiz", "dokuz"];
+      let tens = ["", "on", "yirmi", "otuz", "kırk",
+                  "elli", "altmış", "yetmiş", "seksen", "doksan"];
+
+      if (num >= 10) {
+        number += tens[Math.floor(num / 10)];
+        if (num % 10 > 0) {
+          number += ` ${ones[num % 10]}`;
+        }
+      } else {
+        number += ones[num % 10];
+      }
+      return number;
+  }
+
+  console.log(getTurkishNumber());
+  </script>
+</html>
+b

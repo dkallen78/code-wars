@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Highest Scoring Word
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function high(x){
+      let words = x.split(" ");
+      let hiScore = 0;
+      let hiWord = "";
+
+      for (let i = 0; i < words.length; i++) {
+        let score = 0;
+        for (let j = 0; j < words[i].length; j++) {
+          score += (words[i].charCodeAt(j) - 96);
+        }
+        if (score > hiScore) {
+          hiScore = score;
+          hiWord = words[i];
+        }
+      }
+      return hiWord;
+    }
+
+    console.log(high());
+  </script>
+</html>

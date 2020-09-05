@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Build a Pile of Cubes
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function findNb(m) {
+      let cubeRoot = 1;
+      while (m > 0){
+        m -= cubeRoot ** 3;
+        cubeRoot++;
+      }
+      if (m === 0) {
+        return cubeRoot - 1;
+      } else {
+        return -1;
+      }
+    }
+
+    console.log(findNb());
+  </script>
+</html>

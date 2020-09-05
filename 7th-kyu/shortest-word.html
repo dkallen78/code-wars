@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      7th Kyu - Shortest Word
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function findShort(s){
+      let shortLen = 0;
+      let shortest = 99;
+      for (let i = 0; i < s.length; i++) {
+        if (s[i] !== " ") {
+          shortLen++
+        } else {
+
+          if (shortLen < shortest) {
+            shortest = shortLen
+          }
+          shortLen = 0;
+        }
+      }
+      if (shortLen < shortest) {
+            shortest = shortLen
+          }
+      return shortest;
+    }
+
+    console.log(findShort());
+  </script>
+</html>

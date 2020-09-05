@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Error Correction #1 - Hamming Code
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function encode(text) {
+      //
+      //Split up the string into an array of characters
+      let chars = text.split("").map(function(x) {
+        return x.charCodeAt(0);
+      });
+      //
+      //Convert each character into an 8-bit binary number
+      let bin = chars.map(function(x) {
+        return x.toString(2).padStart(8, "0");
+      });
+      //
+      //Concatenate the elements then split them up by digit
+      bin = bin.join("").split("");
+      //
+      //Triple each character in each element
+      let bits = bin.map(function(x) {
+        return `${x}${x}${x}`;
+      });
+      //
+      //Join and return
+      bits = bits.join("");
+      return bits;
+    }
+
+    function decode(bits) {
+      let bin = [];
+      //
+      //Split the string up into groups of 3 characters
+      //(I now know about String.match(/.{3}/g))
+      for (let i = 0; i < bits.length; i += 3) {
+        bin.push(`${bits[i]}${bits[i+1]}${bits[i+2]}`);
+      }
+      //
+      //Reduce the strings to their most common character
+      bin = bin.map(function(x) {
+        if (x === "000" || x === "001" || x === "010" || x === "100") {
+          return "0";
+        } else {
+          return "1"
+        }
+      });
+      //
+      //Join that new string together
+      bin = bin.join("");
+      let byte = [];
+      //
+      //Seperate that string into groups of 8 characters
+      for (let i = 0; i < bin.length; i += 8) {
+        byte.push(`${bin[i]}${bin[i+1]}${bin[i+2]}${bin[i+3]}${bin[i+4]}${bin[i+5]}${bin[i+6]}${bin[i+7]}`)
+      }
+      //
+      //Convert those characters into numbers which are
+      //  converted into ASCII characters
+      byte = byte.map(function(x) {
+        return String.fromCharCode(parseInt(x, 2));
+      });
+      return byte.join("");
+    }
+
+    console.log(decode(encode("The Sensei told me that i can do this kata")));
+  </script>
+</html>

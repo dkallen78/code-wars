@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Does My Number Look Big in This
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function narcissistic(value) {
+      let count = value.toString(10);
+      let sum = 0;
+
+      for (let i = 0; i < count.length; i++) {
+        sum += parseInt(count[i]) ** count.length;
+      }
+
+      if (sum === value) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  console.log(narcissistic());
+  </script>
+</html>

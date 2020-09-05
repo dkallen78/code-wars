@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Dubstep
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function songDecoder(song){
+      song = song.replace(/WUB/g, " ");
+      song = song.replace(/\s+/g, " ");
+      return song.trim();
+    }
+
+    console.log(songDecoder());
+  </script>
+</html>

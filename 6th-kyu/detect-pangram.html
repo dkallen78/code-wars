@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Detect Pangram
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function isPangram(string){
+      string = string.toLowerCase();
+      let letters = "abcdefghijklmnopqrstuvwxyz";
+      for (let i = 0; i < letters.length; i++) {
+        if (!string.includes(letters[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    console.log(isPangram());
+  </script>
+</html>

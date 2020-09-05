@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Bit Counting
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function countBits(n) {
+      let nString = n.toString(2);
+      let ones = 0;
+      for (let i = 0; i < nString.length; i++) {
+        if (nString[i] === "1") {
+          ones++;
+        }
+      }
+      return ones;
+    }
+
+    console.log(countBits());
+  </script>
+</html>
