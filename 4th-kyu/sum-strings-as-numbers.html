@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Sum Strings as Numbers
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function sumStrings(a,b) {
+      let bigger, smaller;
+      //
+      //differentiates the larger number from the smaller
+      //  then splits the string into an array of characters,
+      //  converts those characters into numbers, then
+      //  reverses the array
+      if (parseInt(a) > parseInt(b)) {
+        bigger = a.split("").map(x => parseInt(x)).reverse();
+        smaller = b.split("").map(x => parseInt(x)).reverse();
+      } else {
+        bigger = b.split("").map(x => parseInt(x)).reverse();
+        smaller = a.split("").map(x => parseInt(x)).reverse();
+      }
+
+      let carry = 0;
+      for (let i = 0; i < bigger.length; i++) {
+        if (typeof smaller[i] === "number") {
+          //
+          //add the two numbers together, plus the "carry"
+          //  if there is one
+          bigger[i] += smaller[i] + carry;
+          if (bigger[i] > 9) {
+            //
+            //If the sum is greater than 10, this handles
+            //  carrying the 10
+            if (typeof bigger[i+1] === "number") {
+              carry = 1;
+              bigger[i] -= 10;
+            } else {
+              bigger[i] -= 10;
+              bigger[i+1] = 1;
+              carry = 0;
+            }
+          } else {
+            //
+            //If it's not greater than 10, we need to clear
+            //  the carry
+            carry = 0;
+          }
+        } else {
+          //
+          //If the array representing the smaller number doesn't
+          //  have a value at the current index, we leave the
+          //  number unchanged unless there is a carry
+          bigger[i] += carry;
+          carry = 0;
+        }
+      }
+      //
+      //reverses the array again
+      bigger = bigger.reverse();
+      //
+      //removes leading 0s
+      while (bigger[0] === 0) {
+        bigger.shift();
+      }
+
+      return bigger.join("");
+    }
+
+    console.log(sumStrings('291981005523320982486833418061','769424671437425023623442216001'));
+  </script>
+</html>

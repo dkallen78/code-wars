@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Playing with Digits
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function digPow(n, p){
+      //
+      //Converts the number into a string, splits it up into
+      //  an array of individual characters, then converts
+      //  those characters into numbers
+      let num = n.toString(10).split("").map(x => parseInt(x));
+      num[0] = num[0] ** p;
+      //
+      //Reduces the elements of the array to an individual value
+      num = num.reduce((y, x, i) => y + x ** (p + i));
+      //
+      //Does it divide evenly?
+      if ((num / n) % 1 === 0) {
+        return num / n;
+      } else {
+        return -1
+      }
+    }
+
+    console.log(digPow(92, 1));
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Take a Number And Sum Its Digits Raised To The Consecutive Powers And ....¡Eureka!!
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function sumDigPow(a, b) {
+      let summers = [];
+      //
+      //Go through all the numbers from a - b
+      for (let i = a; i <= b; i++) {
+        //
+        //Convert it into an array of digits
+        num = i.toString(10).split("").map(x => parseInt(x));
+        //
+        //Reduce the digits to a single value
+        num = num.reduce((y, x, i) => y + x ** (i + 1));
+        //
+        //Does the new number match the original?
+        if (num === i) {
+          summers.push(num);
+        }
+      }
+      return summers;
+    }
+
+    console.log(sumDigPow(50, 150));
+  </script>
+</html>
