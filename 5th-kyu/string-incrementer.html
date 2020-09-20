@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      5th Kyu - String Incrementer
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function incrementString(string) {
+
+      if (!/\d/g.test(string)) {
+        return string + "1";
+      } else {
+        let len = string.match(/[0-9]/g).length;
+        let number = parseInt(string.match(/[0-9]/g).join("")) + 1;
+        number = number.toString(10).padStart(len, "0");
+        string = string.replace(/[0-9]+/, number);
+        return string;
+      }
+    }
+
+    console.log(incrementString("foo9"));
+  </script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      6th Kyu - Decode the Morse Code
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    const MORSE_CODE = {
+      ".-": "A",
+      "-...": "B",
+      "-.-.": "C",
+      "-..": "D",
+      ".": "E",
+      "..-.": "F",
+      "--.": "G",
+      "....": "H",
+      "..": "I",
+      ".---": "J",
+      "-.-": "K",
+      ".-..": "L",
+      "--": "M",
+      "-.": "N",
+      "---": "O",
+      ".--.": "P",
+      "--.-": "Q",
+      ".-.": "R",
+      "...": "S",
+      "-": "T",
+      "..-": "U",
+      "...-": "V",
+      ".--": "W",
+      "-..-": "X",
+      "-.--": "Y",
+      "--..": "Z",
+      ".----": "1",
+      "..---": "2",
+      "...--": "3",
+      "....-": "4",
+      ".....": "5",
+      "-....": "6",
+      "--...": "7",
+      "---..": "8",
+      "----.": "9",
+    }
+
+    function decodeMorse(morseCode) {
+
+      let morseArray = morseCode.split(" ").map(function(x) {
+        if (x) {
+          return MORSE_CODE[x];
+        } else {
+          return " ";
+        }
+      });
+      morseArray = morseArray.join("").replace(/\s+/g, " ").trim();
+      console.log(morseArray);
+      return morseArray;
+    }
+
+    console.log(decodeMorse('.... . -.--   .--- ..- -.. .'));
+  </script>
+</html>
