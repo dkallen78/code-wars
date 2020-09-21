@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      7th Kyu - Digital Cypher
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function encode(str, n) {
+      return str.split("").map((x, i) => (x.charCodeAt()-96) + parseInt(n.toString(10)[i%n.toString(10).length]));
+    }
+
+    console.log(encode("masterpiece",1939));
+  </script>
+</html>
