@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      4th Kyu - Decode the Morse Code, Advanced
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    const MORSE_CODE = {
+      ".-": "A",
+      "-...": "B",
+      "-.-.": "C",
+      "-..": "D",
+      ".": "E",
+      "..-.": "F",
+      "--.": "G",
+      "....": "H",
+      "..": "I",
+      ".---": "J",
+      "-.-": "K",
+      ".-..": "L",
+      "--": "M",
+      "-.": "N",
+      "---": "O",
+      ".--.": "P",
+      "--.-": "Q",
+      ".-.": "R",
+      "...": "S",
+      "-": "T",
+      "..-": "U",
+      "...-": "V",
+      ".--": "W",
+      "-..-": "X",
+      "-.--": "Y",
+      "--..": "Z",
+      ".----": "1",
+      "..---": "2",
+      "...--": "3",
+      "....-": "4",
+      ".....": "5",
+      "-....": "6",
+      "--...": "7",
+      "---..": "8",
+      "----.": "9",
+    }
+
+    function decodeBits(bits) {
+
+      bits = bits.replace(/^0+|0+$/g, "");
+
+      let rate = 0;
+      bits.match(/(1+|0+)/g).forEach(function(x) {
+        if (rate === 0 || x.length < rate) {rate = x.length}
+      });
+
+      bits = bits.replace(new RegExp(`(1|0){${rate}}`, "g"), "$1");
+      bits = bits.replace(/111/g, "-").replace(/000/g, " ");
+      bits = bits.replace(/1/g, ".").replace(/0/g, "");
+      return bits;
+    }
+
+    function decodeMorse(morseCode) {
+
+      let morseArray = morseCode.split(" ").map(function(x) {
+        if (x) {
+          return MORSE_CODE[x];
+        } else {
+          return " ";
+        }
+      });
+      morseArray = morseArray.join("").replace(/\s+/g, " ").trim();
+      return morseArray;
+    }
+
+    console.log(decodeMorse(decodeBits("000000000000000000110011001100110000001100000011111100110011111100111111000000000000001100111111001111110011111100000011001100111111000000111111001100110000001100000000000000000")));
+  </script>
+</html>
