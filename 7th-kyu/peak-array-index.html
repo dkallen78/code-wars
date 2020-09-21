@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      7th Kyu - Peak Array Index
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function peak(arr) {
+
+      for (let i = 1; i < arr.length - 1; i++) {
+        if (arr.slice(0, i).reduce((a, c) => a + c) === arr.slice(i+1).reduce((a, c) => a + c)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    console.log(peak([1,12,3,3,6,3,1]));
+  </script>
+</html>
