@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Title
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function formatDuration(seconds) {
+      let times = [];
+      let labels = ["second", "minute", "hour", "day", "year"];
+      let minutes, hours, days, months, years;
+      times.push(seconds % 60);
+      if ((seconds / 60) >= 1) {
+        minutes = (seconds - (seconds % 60)) / 60;
+        times.push(minutes % 60);
+      }
+      if ((minutes / 60) >= 1) {
+        hours = (minutes - (minutes % 60)) / 60;
+        times.push(hours % 24);
+      }
+      if ((hours / 24) >= 1) {
+        days = (hours - (hours % 24)) / 24;
+        times.push(days % 365);
+      }
+      if ((days / 365) >= 1) {
+        years = (days - (days % 365)) / 365;
+        times.push(years);
+      }
+
+      let timeStrings = [];
+      times.forEach(function(x, i) {
+        if (x === 1) {
+          timeStrings.push(`${x} ${labels[i]}`);
+        } else if (x > 1) {
+          timeStrings.push(`${x} ${labels[i]}s`);
+        }
+      });
+      console.log(timeStrings);
+      if (timeStrings.length > 1) {
+        timeStrings = timeStrings.map(function(x, i) {
+          if (i > 1) {
+            return (x + ",");
+          } else if (i === 1) {
+            return x;
+          } else {
+            return ("and " + x);
+          }
+        });
+      }
+      timeStrings = timeStrings.reverse().join(" ");
+      return timeStrings;
+    }
+
+    console.log(formatDuration(62));
+  </script>
+</html>

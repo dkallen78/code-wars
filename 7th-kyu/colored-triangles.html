@@ -27,19 +27,14 @@
       }
 
       row = row.split("");
-      console.log(row);
       let itterations = row.length - 1
       for (let i = 0; i < itterations; i++) {
-        console.log(`round ${i+1}, row.length ${row.length}`);
-        console.log(`testing ${row}`);
         let newRow = [];
         row = row.forEach(function(x, i) {
           if (i < row.length - 1) {
-            console.log(`testing ${x} and ${row[i+1]}`);
             newRow.push(testPair(x, row[i+1]));
           }
         });
-        console.log(`reduced to ${newRow}`);
         row = newRow.slice();
       }
       return row.join("");

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      7th Kyu - Sequence Sum
+    </title>
+  </head>
+  <body>
+  </body>
+  <script>
+    function sumOfN(n) {
+
+      function findTriangleNumber(number) {
+        return ((number * (number + 1)) / 2);
+      }
+
+      let triNums = [];
+      for (let i = 1; i < Math.abs(n) + 1; i++) {
+        triNums.push(findTriangleNumber(i));
+      }
+      if (n < 0) {
+        triNums = triNums.map(x => x * -1);
+      }
+      triNums.unshift(0);
+      return triNums
+    }
+
+    console.log(sumOfN(-5));
+  </script>
+</html>
